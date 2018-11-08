@@ -7,6 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 5%;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +22,24 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+a.sabras-logo {
+    background: url(../Images/SabrasLogo.png) no-repeat top left;
+    background-size: 100px 100px;
+    display:block;
+    width:90px;
+    height:85px;
+    text-indent: -999px;
+}
+
+.navbar-nav
+{
+    margin:3%;
+    font-size:20px;
+}
+
+.navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
+    color: #57c40f;
+    background-color: transparent;
 }

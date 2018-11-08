@@ -6,10 +6,11 @@ using System.Web.Mvc;
 
 namespace SabrasSmoothie.Controllers
 {
-    public class HomeController : Controller
+    public class MyOrdersController : Controller
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "Our application my-orders page.";
             return View();
         }
     }

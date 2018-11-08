@@ -6,10 +6,11 @@ using System.Web.Mvc;
 
 namespace SabrasSmoothie.Controllers
 {
-    public class HomeController : Controller
+    public class RegisterController : Controller
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "Our application registration page.";
             return View();
         }
     }
