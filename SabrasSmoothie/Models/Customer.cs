@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace SabrasSmoothie.Models
 {
     public class Customer
     {
+        [Key]
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,9 +20,12 @@ namespace SabrasSmoothie.Models
         public string City { get; set; }
         public int ZipCode { get; set; }
         public bool IsAdmin { get; set; }
+
+
+        public ICollection<Order> Orders { get; set; }
     }
 
-    class CustomerDBContext : DbContext 
+    public class CustomerDbContext : DbContext 
     {
         public DbSet<Customer> Customers { get; set; }
     }

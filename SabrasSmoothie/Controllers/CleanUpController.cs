@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SabrasSmoothie.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,17 +7,18 @@ using System.Web.Mvc;
 
 namespace SabrasSmoothie.Controllers
 {
-    public class SabrasExampleController : Controller
+    public class CleanUpController : Controller
     {
-        // GET: /SabrasExample/ 
+        // GET: /CleanUp/ 
 
         public string Index()
         {
-            return "This is my <b>default</b> action...";
+            SeedData.CleanUp();
+            return "System entities cleaned up...";
         }
 
         // 
-        // GET: /SabrasExample/Welcome/ 
+        // GET: /CleanUp/Welcome/ 
 
         public string Welcome()
         {
