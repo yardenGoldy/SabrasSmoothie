@@ -26,7 +26,8 @@ namespace SabrasSmoothie
                       "~/Content/bootstrap.css",
                       "~/Content/Main.css",
                       "~/Content/About.css",
-                      "~/Content/Home.css"));
+                      "~/Content/Home.css",
+                      "~/Content/Login.css"));
         }
     }
 }
