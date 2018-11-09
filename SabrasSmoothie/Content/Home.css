@@ -1,0 +1,64 @@
+﻿pre.products-catalog {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 29%;
+    height: 30%;
+    display:inline-grid;
+    margin:2%;
+    background-color: #cdf7ce;
+}
+
+    pre.products-catalog img {
+        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 8px 20px 0 rgba(0,0,0,0.19);
+        border: 2px solid #51da18;
+        border-radius: 25px;
+        width: 200px;
+        height: 200px;
+        margin: 5%;
+    }
+    pre.products-catalog .title {
+        display:inline-flex;
+    }
+
+        pre.products-catalog .title .btn-add-to-cart {
+            margin-left: 10%;
+            top: 8px;
+            position: relative;
+            background-color: #ced5d1;
+        }
+
+pre.products-catalog .firstLine {
+    display: inline-flex;
+}
+    pre.products-catalog .firstLine h4 {
+        margin-right:10%
+    }
+
+
+pre.products-catalog .title .glyphicon-leaf {
+    color: #40f140;
+    margin-left: 40%;
+    top: 14px;
+}
+.home.container {
+    display:inline-flex;
+}
+
+.price-section .options .option a{
+    display:inline-flex;
+    cursor:pointer;
+}
+.price-section .options .option {
+    cursor:pointer;
+}
+
+.price-section .options .option a input {
+    margin-right: 5px;
+}
+
+.home .params {
+    width: 48%;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px;
+}
