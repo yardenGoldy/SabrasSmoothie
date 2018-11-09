@@ -46,10 +46,12 @@ namespace SabrasSmoothie.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,BirthDate,UserName,Password,Address,City,ZipCode,IsAdmin")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,BirthDate,UserName,Password,Address,City,ZipCode")] Customer customer)
         {
             if (ModelState.IsValid)
             {
+                customer.IsAdmin = false;
+
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
