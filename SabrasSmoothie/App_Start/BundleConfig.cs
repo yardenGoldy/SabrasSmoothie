@@ -24,7 +24,8 @@ namespace SabrasSmoothie
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/Main.css"));
+                      "~/Content/Main.css",
+                      "~/Content/About.css"));
         }
     }
 }
