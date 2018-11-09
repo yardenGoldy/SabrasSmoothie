@@ -33,13 +33,16 @@ a.sabras-logo {
     text-indent: -999px;
 }
 
-.navbar-nav
-{
-    margin:3%;
-    font-size:20px;
+.navbar-nav {
+    margin: 3%;
+    font-size: 20px;
 }
 
 .navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
     color: #57c40f;
     background-color: transparent;
+}
+
+.navbar-fixed-top {
+    position:absolute;
 }
