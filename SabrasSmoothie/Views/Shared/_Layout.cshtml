@@ -18,12 +18,35 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "Index", "About")</li>
-                    <li>@Html.ActionLink("MyOrders", "Index", "MyOrders")</li>
+                    @if (Session["User"] != null && (bool)Session["User"] == true)
+                    {
+                        <li>@Html.ActionLink("MyOrders", "Index", "MyOrders")</li>
+                    }
+                    else if (Session["Admin"] != null && (bool)Session["Admin"] == true)
+                    {
+                        <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                        <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
+
+                    }
                 </ul>
                 <ul class="nav navbar-nav pull-right">
+                @if (Session["User"] != null && (bool)Session["User"] == true)
+                {
+                    <li>Welcome, @Session["UserFullName"]</li>
+                    <li class="logout">@Html.ActionLink("Logout", "Logout", "Login")</li>
+                }
+                else if (Session["Admin"] != null && (bool)Session["Admin"] == true)
+                {
+                    <li>Welcome, Admin</li>
+                    <li class="logout">@Html.ActionLink("Logout", "Logout", "Login")</li>
+                }
+                else
+                {
                     <li>@Html.ActionLink("Register", "Index", "Register")</li>
                     <li>@Html.ActionLink("Login", "Index", "Login")</li>
+                }
                 </ul>
+
             </div>
         </div>
     </div>
