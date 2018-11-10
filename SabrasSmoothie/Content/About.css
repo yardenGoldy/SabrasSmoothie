@@ -19,3 +19,8 @@ pre.about-pre {
     margin:2%;
     font-size:x-large;
 }
+
+video {
+    width: 100%;
+    height: 100%;
+}
