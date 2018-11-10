@@ -24,5 +24,15 @@ namespace SabrasSmoothie.Models
     public class ProductDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
+
+        public IEnumerable<Product> SortByOrders()
+        {
+            return Products.ToList().OrderBy(x =>
+            {
+                if (x.ProductOrders == null)
+                    return 0;
+                return x.ProductOrders.Count;
+            });
+        }
     }
 }

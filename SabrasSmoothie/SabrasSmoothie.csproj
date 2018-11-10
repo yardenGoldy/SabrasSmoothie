@@ -194,6 +194,12 @@
     <Content Include="Images\7.jpg" />
     <Content Include="Images\FacebookIcon.jpg" />
     <Content Include="Images\SabrasLogo.png" />
+    <Content Include="ProductsImageUploads\1.jpg" />
+    <Content Include="ProductsImageUploads\2.jpg" />
+    <Content Include="ProductsImageUploads\3.jpg" />
+    <Content Include="ProductsImageUploads\4.jpg" />
+    <Content Include="ProductsImageUploads\5.jpg" />
+    <Content Include="ProductsImageUploads\6.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
