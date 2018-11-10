@@ -25,7 +25,7 @@ namespace SabrasSmoothie.Controllers
         [HttpPost]
         public ActionResult Index(string userName, string password)
         {
-            var user = _Customer.Customers.First(customer => customer.UserName == userName && customer.Password == password);
+            var user = _Customer.Customers.SingleOrDefault(customer => customer.UserName == userName && customer.Password == password);
             if (user == null)
             {
                 ViewBag.Message = "Invalid username or password";
