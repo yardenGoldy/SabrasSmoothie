@@ -3,84 +3,96 @@
 @{
     ViewBag.Title = "Details";
 }
+@if ((Session["Admin"] == null || (bool)Session["Admin"] != true))
+{
+    <h1>Nice Try!</h1>
+    <h2>But Our Site Is Unhackable.</h2>
+    <h3>This Page Is for Admins Only</h3>
+    <h4>Please Register Or Sign In Like All The Others</h4>
+    <div>
+        @Html.ActionLink("Back to Home", "Index", "Home")
+    </div>
+}
+else
+{
 
-<h2>Details</h2>
+    <h2>Details</h2>
 
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+    <div>
+        <h4>Customer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BirthDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.City)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ZipCode)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ZipCode)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsAdmin)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsAdmin)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.IsAdmin)
+            </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Orders)
@@ -96,3 +108,4 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+}

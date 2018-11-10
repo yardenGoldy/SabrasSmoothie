@@ -3,8 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
+@if ((Session["Admin"] == null || (bool)Session["Admin"] != true))
+{
+    <h1>Nice Try!</h1>
+    <h2>But Our Site Is Unhackable.</h2>
+    <h3>This Page Is for Admins Only</h3>
+    <h4>Please Register Or Sign In Like All The Others</h4>
+    <div>
+        @Html.ActionLink("Back to Home", "Index", "Home")
+    </div>
+}
+else
+{
 
-<h2>Index</h2>
+    <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -64,6 +76,5 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
+        }
 }
-
-</table>

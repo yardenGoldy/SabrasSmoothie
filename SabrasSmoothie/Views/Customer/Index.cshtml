@@ -3,9 +3,56 @@
 @{
     ViewBag.Title = "Index";
 }
+@if ((Session["Admin"] == null || (bool)Session["Admin"] != true))
+{
+    <h1>Nice Try!</h1>
+    <h2>But Our Site Is Unhackable.</h2>
+    <h3>This Page Is for Admins Only</h3>
+    <h4>Please Register Or Sign In Like All The Others</h4>
+    <div>
+        @Html.ActionLink("Back to Home", "Index", "Home")
+    </div>
+}
+else
+{
+    <h2>Index</h2>
 
-<h2>Index</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </th>
+            <th></th>
+        </tr>
 
+        }
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -83,5 +130,3 @@
         </td>
     </tr>
 }
-
-</table>

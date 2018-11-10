@@ -3,32 +3,45 @@
 @{
     ViewBag.Title = "Details";
 }
+@if ((Session["User"] == null || (bool)Session["User"] != true))
+{
+    <h1>Nice Try!</h1>
+    <h2>But Our Site Is Unhackable.</h2>
+    <h3>This Page Is for Users Only</h3>
+    <h4>Please Register Or Sign In Like All The Others</h4>
+    <div>
+        @Html.ActionLink("Back to Home", "Index", "Home")
+    </div>
+}
+else
+{
 
-<h2>Details</h2>
+    <h2>Details</h2>
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Customer.FirstName)
-        </dt>
+    <div>
+        <h4>Order</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Customer.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Customer.FirstName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CreationDate)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

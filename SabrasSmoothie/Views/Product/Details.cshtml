@@ -3,64 +3,77 @@
 @{
     ViewBag.Title = "Details";
 }
+@if ((Session["Admin"] == null || (bool)Session["Admin"] != true))
+{
+    <h1>Nice Try!</h1>
+    <h2>But Our Site Is Unhackable.</h2>
+    <h3>This Page Is for Admins Only</h3>
+    <h4>Please Register Or Sign In Like All The Others</h4>
+    <div>
+        @Html.ActionLink("Back to Home", "Index", "Home")
+    </div>
+}
+else
+{
 
-<h2>Details</h2>
+    <h2>Details</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Calories)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Calories)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Calories)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Calories)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsVegan)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.IsVegan)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsVegan)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.IsVegan)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ImagePath)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

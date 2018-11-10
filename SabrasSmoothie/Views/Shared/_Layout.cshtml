@@ -31,21 +31,29 @@
                     }
                 </ul>
                 <ul class="nav navbar-nav pull-right">
-                @if (Session["User"] != null && (bool)Session["User"] == true)
-                {
-                    <li>Welcome, @Session["UserFullName"]</li>
-                    <li class="logout">@Html.ActionLink("Logout", "Logout", "Login")</li>
-                }
-                else if (Session["Admin"] != null && (bool)Session["Admin"] == true)
-                {
-                    <li>Welcome, Admin</li>
-                    <li class="logout">@Html.ActionLink("Logout", "Logout", "Login")</li>
-                }
-                else
-                {
-                    <li>@Html.ActionLink("Register", "Index", "Register")</li>
-                    <li>@Html.ActionLink("Login", "Index", "Login")</li>
-                }
+                    @if (Session["Currency"] == null || (bool)Session["Currency"] != true)
+                    {
+                        <li><img src="~/Images/USA-Flag.png" style="width:30px;height:20px;margin-top:15px"/></li>
+                    }
+                    else
+                    {
+                        <li><img src="~/Images/ISRAEL-FLAG.png" style="width:30px;height:20px;margin-top:15px"/></li>
+                    }
+                    @if (Session["User"] != null && (bool)Session["User"] == true)
+                    {
+                        <li>Welcome, @Session["UserFullName"]</li>
+                        <li class="logout">@Html.ActionLink("Logout", "Logout", "Login")</li>
+                    }
+                    else if (Session["Admin"] != null && (bool)Session["Admin"] == true)
+                    {
+                        <li>Welcome, Admin</li>
+                        <li class="logout">@Html.ActionLink("Logout", "Logout", "Login")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Register", "Index", "Register")</li>
+                        <li>@Html.ActionLink("Login", "Index", "Login")</li>
+                    }
                 </ul>
 
             </div>

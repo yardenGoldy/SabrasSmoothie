@@ -1,7 +1,20 @@
-﻿@{
-    ViewBag.Title = "Orders";
+﻿@if ((Session["User"] == null || (bool)Session["User"] != true))
+{
+    <h1>Nice Try!</h1>
+    <h2>But Our Site Is Unhackable.</h2>
+    <h3>This Page Is for Users Only</h3>
+    <h4>Please Register Or Sign In Like All The Others</h4>
+    <div>
+        @Html.ActionLink("Back to Home", "Index", "Home")
+    </div>
 }
-<h2>@ViewBag.Title</h2>
-<h3>See each order state</h3>
+else
+{
+    {
+        ViewBag.Title = "Orders";
+    }
+    <h2>@ViewBag.Title</h2>
+    <h3>See each order state</h3>
 
-<p>Use this area to provide additional information.</p>
+    <p>Use this area to provide additional information.</p>
+}
