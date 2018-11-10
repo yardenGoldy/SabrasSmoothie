@@ -46,3 +46,7 @@ a.sabras-logo {
 .navbar-fixed-top {
     position:absolute;
 }
+
+.logout {
+    font-size: 15px;
+}
