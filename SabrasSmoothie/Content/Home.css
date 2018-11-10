@@ -66,3 +66,18 @@ pre.products-catalog .title .glyphicon-leaf {
     border-radius: 4px;
     padding: 6px;
 }
+
+h4 {
+    text-shadow: 1px 0px 1px #40f140;
+    transition: text-shadow 0.2s ease, background 0.2s ease;
+    border-radius: 6px;
+}
+
+h4:hover {
+    text-shadow: 4px 2px 0px #40f140;
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.items {
+    column-count: auto;
+}
