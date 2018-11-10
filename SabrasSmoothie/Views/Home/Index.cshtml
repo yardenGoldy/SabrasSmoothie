@@ -3,8 +3,10 @@
 }
 
 <div style="text-align:center">
-    <input type="text" size="50" placeholder="Search for anything..." name="search">
-    <button type="submit"><i class="fa fa-search"></i></button>
+    <form method="post" action="Home/Search">
+        <input type="text" size="50" placeholder="Search for anything..." name="message">
+        <input type="submit" class="fa fa-search"/>
+    </form>
 </div>
 <div class="container home">
     <div class="params">
@@ -13,7 +15,7 @@
             <div class="option">
                 <a href="#">
                     <input type="checkbox" class="first-checkbox">
-                    <label><span class="first-label">Under ILS 100</span></label>
+                    <label><span class="first-label">Under ILS 100</span><span class="grouped">(@ViewBag.GroupByPrices[0])</span></label>
                 </a>
             </div>
             <div class="option">
