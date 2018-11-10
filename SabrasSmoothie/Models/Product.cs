@@ -74,7 +74,7 @@ namespace SabrasSmoothie.Models
             List<List<Product>> result = new List<List<Product>>();
             result.Add(sortedProducts.GetRange(0, ProductsPerGroup));
             result.Add(sortedProducts.GetRange(ProductsPerGroup, ProductsPerGroup));
-            result.Add(sortedProducts.GetRange(ProductsPerGroup * 2, length));
+            result.Add(sortedProducts.GetRange(ProductsPerGroup * 2, length - ProductsPerGroup * 2));
             return result;
         }
 

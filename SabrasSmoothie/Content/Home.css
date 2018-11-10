@@ -66,3 +66,10 @@ pre.products-catalog .title .glyphicon-leaf {
     border-radius: 4px;
     padding: 6px;
 }
+
+span.grouped {
+    color: #e87239;
+    left: 4PX;
+    position: relative;
+}
+
