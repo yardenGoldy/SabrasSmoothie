@@ -22,10 +22,7 @@ namespace SabrasSmoothie.Models
         public ICollection<OrderProduct> OrderProducts { get; set; }
     }
 
-    public class OrderDbContext : DbContext
+    public class OrderDbContext : SabrasDbContext
     {
-        public DbSet<Order> Orders { get; set; }
-
-        public System.Data.Entity.DbSet<SabrasSmoothie.Models.Customer> Customers { get; set; }
     }
 }

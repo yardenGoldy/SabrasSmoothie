@@ -21,17 +21,31 @@ namespace SabrasSmoothie.Models
         public ICollection<OrderProduct> ProductOrders { get; set; }
     }
 
-    public class ProductDbContext : DbContext
+    public class ProductDbContext : SabrasDbContext
     {
-        public DbSet<Product> Products { get; set; }
 
-        public IEnumerable<Product> SortByOrders()
+        public IQueryable<Product> GetProductsIncludeProductOrders()
         {
-            return Products.ToList().OrderBy(x => x.ProductOrders != null ? x.ProductOrders.Count : 0);
+            return this.Products.Include(product => product.ProductOrders);
         }
 
-        public IEnumerable<Product> FindByAll(string message)
+        public IEnumerable<Product> SortByOrders(IEnumerable<Product> products = null)
         {
+            if(products == null)
+            {
+                products = Products.ToList();
+            }
+
+            return products.OrderBy(x => x.ProductOrders != null ? x.ProductOrders.Count : 0);
+        }
+
+        public IEnumerable<Product> FindByAll(string message, IEnumerable<Product> products = null)
+        {
+            if (products == null)
+            {
+                products = Products.ToList();
+            }
+
             IEnumerable<Product> allNames = null, allPrices = null, allCalories = null;
             int result;
             if (int.TryParse(message, out result))
@@ -47,19 +61,19 @@ namespace SabrasSmoothie.Models
             return allNames.Union(allPrices).Union(allCalories).Distinct();
         }
 
-        public List<List<Product>> GroupByPrices() {
+        public List<List<Product>> GroupByPrices(IEnumerable<Product> products = null) {
             var productsOrderByPrice = Products.OrderBy(x => x.Price).ToList();
             return GroupingByNumber(productsOrderByPrice, 3);
         }
 
-        public List<List<Product>> GroupByCalories()
+        public List<List<Product>> GroupByCalories(IEnumerable<Product> products = null)
         {
             var productsOrderByPrice = Products.OrderBy(x => x.Calories).ToList();
             return GroupingByNumber(productsOrderByPrice, 3);
         }
 
-        public IEnumerable<Product> RangePrice(int min, int max) {
-            return Products.Where(x => x.Price >= min && x.Price <= max);
+        public IEnumerable<Product> RangePrice(int min, int max, IEnumerable<Product> products = null) {
+            return Products.Where(x => x.Price >= min && x.Price <= max).ToList();
         }
 
         public IEnumerable<Product> RangeCalories(int min, int max)

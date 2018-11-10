@@ -17,7 +17,7 @@ namespace SabrasSmoothie.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            return View(db.GetProductsIncludeProductOrders().ToList());
         }
 
         // GET: Product/Details/5

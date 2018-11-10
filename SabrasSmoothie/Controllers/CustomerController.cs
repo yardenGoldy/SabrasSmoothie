@@ -13,11 +13,12 @@ namespace SabrasSmoothie.Controllers
     public class CustomerController : Controller
     {
         private CustomerDbContext db = new CustomerDbContext();
+        //private OrderDbContext orderDB = new OrderDbContext();
 
         // GET: Customer
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(db.GetCustomersWithOrders().ToList());
         }
 
         // GET: Customer/Details/5
