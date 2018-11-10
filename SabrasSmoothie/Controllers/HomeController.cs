@@ -14,6 +14,21 @@ namespace SabrasSmoothie.Controllers
         {
             var products = Product.SortByOrders();
 
+            var productsByCalories = Product.GroupByCalories();
+            var productsByPrice = Product.GroupByPrices();
+            var productsByVegan = Product.GroupByVegan();
+
+            ViewBag.Products = products;
+            ViewBag.productsByCalories = productsByCalories;
+            ViewBag.productsByPrice = productsByPrice;
+            ViewBag.productsByVegan = productsByVegan;
+            return View();
+        }
+
+        public ActionResult Search(string message)
+        {
+            var products = Product.FindByAll(message);
+
             ViewBag.Products = products;
             return View();
         }

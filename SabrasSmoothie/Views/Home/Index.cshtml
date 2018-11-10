@@ -3,8 +3,10 @@
 }
 
 <div style="text-align:center">
-    <input type="text" size="50" placeholder="Search for anything..." name="search">
-    <button type="submit"><i class="fa fa-search"></i></button>
+    <form method="post" action="Home/Search">
+        <input type="text" size="50" placeholder="Search for anything..." name="message">
+        <input type="submit" class="fa fa-search"/>
+    </form>
 </div>
 <div class="container home">
     <div class="params">
@@ -13,7 +15,7 @@
             <div class="option">
                 <a href="#">
                     <input type="checkbox" class="first-checkbox">
-                    <label><span class="first-label">Under ILS 100</span></label>
+                    <label><span class="first-label">Under ILS 100</span><span class="grouped">(@ViewBag.productsByPrice[0].Count)</span></label>
                 </a>
             </div>
             <div class="option">
@@ -22,7 +24,7 @@
 
 
 
-                    <label><span class="first-label">ILS 110.00 - ILS 405.00</span></label>
+                    <label><span class="first-label">ILS 110.00 - ILS 405.00</span><span class="grouped">(@ViewBag.productsByPrice[1].Count)</span></label>
                 </a>
             </div>
             <div class="option">
@@ -31,7 +33,7 @@
 
 
 
-                    <label><span class="first-label">Over ILS 100</span></label>
+                    <label><span class="first-label">Over ILS 100</span><span class="grouped">(@ViewBag.productsByPrice[2].Count)</span></label>
                 </a>
             </div>
         </div>
@@ -49,16 +51,16 @@
             <div class="option">
                 <a href="#">
                     <input type="checkbox" class="first-checkbox">
-                    <label><span class="first-label">Under Cal 100</span></label>
+                    <label><span class="first-label">Under Cal 100</span><span class="grouped">(@ViewBag.productsByCalories[0].Count)</span></label>
                 </a>
             </div>
             <div class="option">
                 <a class="cbx prRng" href="#">
                     <input aria-hidden="true" tabindex="-1" type="checkbox" class="second-checkbox">
-
-
-
-                    <label><span class="first-label">Cal 110.00 - Cal 405.00</span></label>
+                    <label>
+                        <span class="first-label">Cal 110.00 - Cal 405.00</span>
+                        <span class="grouped">(@ViewBag.productsByCalories[1].Count)</span>
+                    </label>
                 </a>
             </div>
             <div class="option">
@@ -67,7 +69,7 @@
 
 
 
-                    <label><span class="first-label">Over Cal 100</span></label>
+                    <label><span class="first-label">Over Cal 100</span><span class="grouped">(@ViewBag.productsByCalories[2].Count)</span></label>
                 </a>
             </div>
         </div>

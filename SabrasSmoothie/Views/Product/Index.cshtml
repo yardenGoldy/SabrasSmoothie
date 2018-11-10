@@ -29,6 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ImagePath)
         </th>
+        <th>
+            Ordered
+        </th>
         <th></th>
     </tr>
 
@@ -51,6 +54,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ImagePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductOrders.Count)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

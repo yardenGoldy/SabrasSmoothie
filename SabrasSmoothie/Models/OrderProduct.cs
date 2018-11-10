@@ -25,8 +25,7 @@ namespace SabrasSmoothie.Models
         public Order Order { get; set; }
     }
 
-    public class OrderProductDbContext : DbContext
+    public class OrderProductDbContext : SabrasDbContext
     {
-        public DbSet<OrderProduct> OrderProducts { get; set; }
     }
 }

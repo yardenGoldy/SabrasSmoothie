@@ -82,6 +82,14 @@
             @Html.DisplayFor(model => model.IsAdmin)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Orders)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orders.Count)
+        </dd>
+
     </dl>
 </div>
 <p>

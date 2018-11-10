@@ -25,8 +25,11 @@ namespace SabrasSmoothie.Models
         public ICollection<Order> Orders { get; set; }
     }
 
-    public class CustomerDbContext : DbContext 
+    public class CustomerDbContext : SabrasDbContext 
     {
-        public DbSet<Customer> Customers { get; set; }
+        public IQueryable<Customer> GetCustomersWithOrders()
+        {
+            return this.Customers.Include(customer => customer.Orders);
+        }
     }
 }
