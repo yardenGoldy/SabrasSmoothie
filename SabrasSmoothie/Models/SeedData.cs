@@ -138,18 +138,60 @@ namespace SabrasSmoothie.Models
                         new Product
                         {
                             Id = 1,
-                            Name = "Gods Smoothie",
-                            Description = "Lichi, Banana, Dates, Pekan",
-                            Price = 30,
+                            Name = "Strawberries Smoothie",
+                            Description = "Lichi, Banana, Strawberries and a lot of love",
+                            ImagePath="/ProductsImageUploads/1.jpg",
+                            Price = 23,
                             Calories = 700,
                             IsVegan = true
                         },
                          new Product
                          {
                             Id = 2,
-                            Name = "Kofiko",
-                            Description = "Chooclate, Oreo Cookies, Banana",
+                            Name = "Green Smoothie",
+                            Description = "Nana, Cucumber, pear, coriander",
+                            ImagePath="/ProductsImageUploads/2.jpg",
                             Price = 33,
+                            Calories = 400,
+                            IsVegan = true
+                         },
+                          new Product
+                         {
+                            Id = 3,
+                            Name = "Gods Smoothie",
+                            Description = "Nana,Strawberry, Strawberry, Kiwi, Milk",
+                            ImagePath="/ProductsImageUploads/3.jpg",
+                            Price = 40,
+                            Calories = 1150,
+                            IsVegan = false
+                         },
+                         new Product
+                         {
+                            Id = 4,
+                            Name = "Banana Smoothie",
+                            Description = "Nana, Strawberry, Banana",
+                            ImagePath="/ProductsImageUploads/4.jpg",
+                            Price = 31,
+                            Calories = 700,
+                            IsVegan = true
+                         },
+                         new Product
+                         {
+                            Id = 5,
+                            Name = "Weird Smoothie",
+                            Description = "Pumpkin, Chooclate, Nana, Oreo Cookies, Banana",
+                            ImagePath="/ProductsImageUploads/5.jpg",
+                            Price = 50,
+                            Calories = 971,
+                            IsVegan = true
+                         },
+                         new Product
+                         {
+                            Id = 6,
+                            Name = "Fat Smoothie",
+                            Description = "Chooclate, Oreo Cookies, Banana",
+                            ImagePath="/ProductsImageUploads/6.jpg",
+                            Price = 49,
                             Calories = 1150,
                             IsVegan = false
                          }
