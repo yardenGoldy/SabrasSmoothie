@@ -13,5 +13,11 @@ namespace SabrasSmoothie.Controllers
             ViewBag.Message = "Our application login page.";
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Index(string userName, string password)
+        {
+            return View();
+        }
     }
 }
