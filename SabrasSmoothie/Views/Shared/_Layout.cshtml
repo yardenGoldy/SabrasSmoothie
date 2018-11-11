@@ -21,7 +21,7 @@
                     <li>@Html.ActionLink("About", "Index", "About")</li>
                     @if (Session["User"] != null && (bool)Session["User"] == true)
                     {
-                        <li>@Html.ActionLink("Cart", "InitCart", "OrderProduct")</li>
+                        <li>@Html.ActionLink("Cart", "Create", "OrderProduct")</li>
                     }
                     else if (Session["Admin"] != null && (bool)Session["Admin"] == true)
                     {

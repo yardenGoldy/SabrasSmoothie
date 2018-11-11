@@ -59,6 +59,7 @@ namespace SabrasSmoothie.Controllers
         {
             try
             {
+                Index();
                 if (Session["Cart"] == null)
                 {
                     Session["Cart"] = new List<Product>();

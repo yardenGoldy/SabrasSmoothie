@@ -81,3 +81,8 @@ footer {
     background-color: rgba(0, 255, 0, 0.2);
     outline: 1px solid slategrey;
 }
+
+.form-group img {
+    width: 20%;
+    height: 150px;
+}
