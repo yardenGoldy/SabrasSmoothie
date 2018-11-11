@@ -46,7 +46,7 @@ namespace SabrasSmoothie.Models
                 newQuery = newQuery.OrElse(Product => Product.Price == result).OrElse(product => product.Calories == result);
             }
 
-            newQuery = newQuery.OrElse(Product => Product.Name == message);
+            newQuery = newQuery.OrElse(Product => Product.Name.Contains(message));
 
             return newQuery.AndAlso(query);
         }
