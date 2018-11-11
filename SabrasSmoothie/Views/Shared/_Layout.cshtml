@@ -19,6 +19,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "Index", "About")</li>
+                    <li>@Html.ActionLink("Predicted Smoothie", "Index", "PredictedSmoothie")</li>
                     @if (Session["User"] != null && (bool)Session["User"] == true)
                     {
                         <li>@Html.ActionLink("MyOrders", "Index", "MyOrders")</li>

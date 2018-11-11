@@ -41,7 +41,7 @@ namespace SabrasSmoothie.Controllers
                 Session["UserFullName"] = user.FirstName + " " + user.LastName;
             }
             
-            return Redirect("/Home/"); ;
+            return Redirect("/Home/");
         }
     }
 }

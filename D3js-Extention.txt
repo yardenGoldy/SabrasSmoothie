@@ -1,0 +1,30 @@
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+var data = [];// Insert Data Of Orders Per Custumer
+
+        var w = 500;
+        var h = 100;
+        
+        var svg = d3.select("#barChart")
+                    .attr("width", w)
+                    .attr("height", h);
+        
+        svg.selectAll("rect")
+         .data(data)
+         .enter()
+           .append("rect")
+           .attr("x", function(d, i) {
+            return i * 21;  //Bar width of 20 plus 1 for padding
+        })
+        .attr("y", function(d) {
+            return h - d;  //Height minus data value
+        })
+        .attr("width", 20)
+        .attr("height", function(d) {
+            return d;  //Just the data value
+        })
+        .attr("fill", function(d) {
+            return "rgb(0, 0, " + (d * 3) + ")";
+        });
+    </script>
+	<svg id="barChart"></svg>

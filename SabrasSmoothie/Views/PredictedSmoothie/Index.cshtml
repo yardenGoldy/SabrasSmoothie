@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "PredictedSmoothie";
+}
+
+<h2>PredictedSmoothie</h2>
+@using (Html.BeginForm("Submit", "PredictedSmoothie"))
+{<table>
+     <tr>
+         <td>
+             <input name="cbMilk" type="checkbox" />
+             <label>Milk / Yogurt</label>
+         </td>
+         <td>
+             <input name="cbOrange" type="checkbox" />
+             <label>Orange Juice</label>
+         </td>
+         <td>
+             <input name="cbStrawberry" type="checkbox" />
+             <label>Strawberries</label>
+         </td>
+     </tr>
+     <tr>
+         <td>
+             <input name="cbNana" type="checkbox" />
+             <label>Nana</label>
+         </td>
+         <td>
+             <input name="cbBananas" type="checkbox" />
+             <label>Bananas</label>
+         </td>
+         <td>
+             <input name="cbApples" type="checkbox" />
+             <label>Apples</label>
+         </td>
+     </tr>
+     <tr>
+         <td>
+             <input name="cbNuts" type="checkbox" />
+             <label>Nuts</label>
+         </td>
+         <td>
+             <input name="cbSweets" type="checkbox" />
+             <label>Sweets</label>
+         </td>
+         <td>
+             <input name="cbHoney" type="checkbox" />
+             <label>Honey</label>
+         </td>
+         <td>
+             <input name="cbGinger" type="checkbox" />
+             <label>Ginger</label>
+         </td>
+     </tr>
+</table>
+    <input id="preSubmit" type="submit" />
+}
+

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Submit";
+}
+
+<h2>Results!</h2>
+
+@using (Html.BeginForm("Change", "PredictedSmoothie"))
+{
+    <label name="lPrediction">Your Prediction is: </label>
+    <input type="button" value="Yes!" />
+    <input type="button" value="No.." />
+}
+
