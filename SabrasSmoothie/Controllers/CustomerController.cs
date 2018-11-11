@@ -53,6 +53,8 @@ namespace SabrasSmoothie.Controllers
             {
                 customer.IsAdmin = false;
 
+                if (customer.BirthDate.Year < 1900) customer.BirthDate = new DateTime(1900, customer.BirthDate.Month, customer.BirthDate.Day);
+
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
