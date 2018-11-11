@@ -17,7 +17,7 @@ namespace SabrasSmoothie.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Customer);
+            var orders = db.Orders.Include(o =>o.OrderProducts).Include(o => o.Customer);
             return View(orders.ToList());
         }
 
