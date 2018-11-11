@@ -13,11 +13,20 @@ namespace SabrasSmoothie.Controllers
     public class OrderProductController : Controller
     {
         private OrderProductDbContext db = new OrderProductDbContext();
+        private ProductDbContext ProductDB = new ProductDbContext();
+
 
         // GET: OrderProduct
         public ActionResult Index()
         {
-            return View(db.OrderProducts.ToList());
+            return View();
+        }
+
+        public ActionResult InitCart()
+        {
+            IList<Product> CartProducts = (Session["Cart"] as IList<Product>).Distinct().ToList();
+            ViewBag.CartProducts = CartProducts;
+            return RedirectToAction("Index");
         }
 
         // GET: OrderProduct/Details/5

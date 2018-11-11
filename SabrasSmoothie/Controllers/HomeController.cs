@@ -55,6 +55,28 @@ namespace SabrasSmoothie.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AddToCart(string ProductId)
+        {
+            try
+            {
+                if (Session["Cart"] == null)
+                {
+                    Session["Cart"] = new List<Product>();
+                }
+
+                Product currentProduct = (ViewBag.Products as IEnumerable<Product>).FirstOrDefault(x => x.Id.ToString() == ProductId);
+
+                (Session["Cart"] as IList<Product>).Add(currentProduct);
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return RedirectToAction("Index");
+        }
+
+
         public static void DupPrices(Product[] products) {
             
             JObject Answer = JObject.Parse(GetCurrency("http://data.fixer.io/api/latest?access_key=ae8df3ea35ce6a2a4c670b1b6407a86d&symbols=USD,ILS&format=1"));

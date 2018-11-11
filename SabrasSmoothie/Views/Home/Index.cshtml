@@ -92,35 +92,18 @@
                     }
 
                 </div>
-            <span>
-            <a title="Add to cart" href="#" class="btn btn-default btn-add-to-cart btn-xs">
-            <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
-
-                    </a>
+            @if (Session["User"] != null && (bool)Session["User"])
+            {
+                <span>
+                    @Html.ActionLink("Add to cart", "AddToCart", "Home", new { ProductId = product.Id }, new { @class = "btn btn-default btn-add-to-cart btn-xs" })
                 </span>
+            }
             <img src="@product.ImagePath" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="firstLine">
-            <h4>@product.Price$</h4>
-            <h4>@product.Calories Calories</h4>
-</div>
-</pre>
+                <div class="firstLine">
+                            <h4>@product.Price$</h4>
+                            <h4>@product.Calories Calories</h4>
+                </div>
+            </pre>
         }
-
     </div>
-
 </div>
