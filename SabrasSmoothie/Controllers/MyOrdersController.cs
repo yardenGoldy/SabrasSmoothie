@@ -14,6 +14,10 @@ namespace SabrasSmoothie.Controllers
             {
                 return Redirect("/Login/Index");
             }
+            else if (Session["User"] != null)
+            {
+                
+            }
 
             ViewBag.Message = "Your orders";
             return View();
