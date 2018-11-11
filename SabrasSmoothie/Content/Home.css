@@ -1,9 +1,10 @@
 ﻿pre.products-catalog {
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    width: 29%;
-    height: 50%;
-    display:inline-grid;
-    margin:2%;
+    /*width: 29%;
+    height: 50%;*/
+    min-width: 250px;
+    display: inline-grid;
+    margin: 2%;
     background-color: #cdf7ce;
 }
 
@@ -59,8 +60,8 @@ pre.products-catalog .title .glyphicon-leaf {
 }
 
 .home .params {
-    width: 35%;
-    height:400px;
+    width: 30%;
+    height: 450px;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -80,6 +81,7 @@ h4:hover {
 
 .items {
     column-count: auto;
+    width: 100%;
 }
 
 span.grouped {

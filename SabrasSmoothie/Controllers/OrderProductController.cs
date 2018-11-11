@@ -13,11 +13,18 @@ namespace SabrasSmoothie.Controllers
     public class OrderProductController : Controller
     {
         private OrderProductDbContext db = new OrderProductDbContext();
+        private ProductDbContext ProductDB = new ProductDbContext();
+
 
         // GET: OrderProduct
         public ActionResult Index()
         {
-            return View(db.OrderProducts.ToList());
+            return View();
+        }
+
+        public ActionResult InitCart()
+        {
+            return RedirectToAction("Index");
         }
 
         // GET: OrderProduct/Details/5
@@ -38,6 +45,13 @@ namespace SabrasSmoothie.Controllers
         // GET: OrderProduct/Create
         public ActionResult Create()
         {
+            if (Session["Cart"] == null)
+            {
+                Session["Cart"] = new List<Product>();
+            }
+
+            IList<Product> CartProducts = (Session["Cart"] as IList<Product>).Distinct().ToList();
+            ViewBag.CartProducts = CartProducts;
             return View();
         }
 
@@ -56,6 +70,30 @@ namespace SabrasSmoothie.Controllers
             }
 
             return View(orderProduct);
+        }
+
+        [HttpPost]
+        public ActionResult SendParams(List<string> quantity)
+        {
+            db.Orders.Add(new Order()
+            {
+                CreationDate = DateTime.Now,
+                CustomerId = int.Parse(Session["UserId"].ToString())
+            });
+
+            var sessionAsType = (Session["Cart"] as IList<Product>);
+            for (int i = 0; i < quantity.Count; i++)
+            {
+                db.OrderProducts.Add(new OrderProduct()
+                {
+                    ProductId = sessionAsType[i].Id,
+                    Quantity = int.Parse(quantity[i].ToString())
+                });
+            }
+            
+            db.SaveChanges();
+            Session["Cart"] = new List<Product>();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: OrderProduct/Edit/5

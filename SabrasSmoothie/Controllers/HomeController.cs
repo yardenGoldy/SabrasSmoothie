@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Mono.Linq.Expressions;
+using Newtonsoft.Json.Linq;
 using SabrasSmoothie.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -20,14 +22,14 @@ namespace SabrasSmoothie.Controllers
             // Debugging Mode! Delete In Production!
             var user = _Customer.Customers.SingleOrDefault(customer => customer.UserName == "Admin" && customer.Password == "Admin");
             Session["Admin"] = true;
+            var searchQuery = TempData["search_query"] != null ? ((Expression<Func<Product, bool>>)TempData["search_query"]) : PredicateBuilder.True<Product>();
+            var paramQuery = TempData["param_query"] != null ? ((Expression<Func<Product, bool>>)TempData["param_query"]) : PredicateBuilder.True<Product>();
+            var query = searchQuery.AndAlso(paramQuery);
+            var products = Product.SortByOrders(query);
 
-
-            var products = Product.SortByOrders();
-
-            var productsByCalories = Product.GroupByCalories();
-            var productsByPrice = Product.GroupByPrices();
-            var productsByVegan = Product.GroupByVegan();
-
+            var productsByCalories = Product.GroupByCalories(query);
+            var productsByPrice = Product.GroupByPrices(query);
+            var productsByVegan = Product.GroupByVegan(query);
             ViewBag.Products = products;
             ViewBag.productsByCalories = productsByCalories;
             ViewBag.productsByPrice = productsByPrice;
@@ -35,13 +37,46 @@ namespace SabrasSmoothie.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Search(string message)
         {
-            var products = Product.FindByAll(message);
-
-            ViewBag.Products = products;
-            return View();
+            var query = TempData["param_query"] != null ? ((Expression<Func<Product, bool>>)TempData["param_query"]) : PredicateBuilder.True<Product>();
+            TempData["search_query"] = Product.FindByAll(query, message);
+            return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult SendParams(int minPrice = int.MinValue, int maxPrice = int.MaxValue, int minCal = int.MinValue, int maxCal = int.MaxValue, string isVegan = null)
+        {
+            var query = TempData["search_query"] != null ? ((Expression<Func<Product, bool>>)TempData["search_query"]) : PredicateBuilder.True<Product>();
+            var rangeQuery = Product.RangeCalories(Product.RangePrice(query, minPrice, maxPrice), minCal, maxCal);
+            var veganWithRangeQuery = isVegan == null ? rangeQuery : Product.QueryIsVegan(rangeQuery, isVegan.Equals("on") ? true : false);
+
+            TempData["param_query"] = veganWithRangeQuery;
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AddToCart(string ProductId)
+        {
+            try
+            {
+                Index();
+                if (Session["Cart"] == null)
+                {
+                    Session["Cart"] = new List<Product>();
+                }
+
+                Product currentProduct = (ViewBag.Products as IEnumerable<Product>).FirstOrDefault(x => x.Id.ToString() == ProductId);
+
+                (Session["Cart"] as IList<Product>).Add(currentProduct);
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return RedirectToAction("Index");
+        }
+
 
         public static void DupPrices(Product[] products) {
             

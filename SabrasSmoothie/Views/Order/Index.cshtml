@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-@if ((Session["User"] == null || (bool)Session["User"] != true))
+@if ((Session["Admin"] == null || (bool)Session["Admin"] != true))
 {
     <h1>Nice Try!</h1>
     <h2>But Our Site Is Unhackable.</h2>

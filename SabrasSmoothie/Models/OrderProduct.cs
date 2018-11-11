@@ -27,5 +27,22 @@ namespace SabrasSmoothie.Models
 
     public class OrderProductDbContext : SabrasDbContext
     {
+        public IQueryable<OrderProduct> GetOrderProductsWithProduct()
+        {
+            return this.OrderProducts.Include(OrderProduct => OrderProduct.Product);
+        }
+        public IQueryable<OrderProduct> GetOrderProductsWithOrder()
+        {
+            return this.OrderProducts.Include(OrderProduct => OrderProduct.Order);
+        }
+        public IQueryable<OrderProduct> GetOrderProductsWithBoth()
+        {
+            return this.OrderProducts
+                .Include(OrderProduct => OrderProduct.Order)
+                .Include(OrderProduct => OrderProduct.Product);
+        }
+
+
+
     }
 }

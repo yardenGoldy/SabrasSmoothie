@@ -22,13 +22,13 @@
                     <li>@Html.ActionLink("Predicted Smoothie", "Index", "PredictedSmoothie")</li>
                     @if (Session["User"] != null && (bool)Session["User"] == true)
                     {
-                        <li>@Html.ActionLink("MyOrders", "Index", "MyOrders")</li>
+                        <li>@Html.ActionLink("Cart", "Create", "OrderProduct")</li>
                     }
                     else if (Session["Admin"] != null && (bool)Session["Admin"] == true)
                     {
                         <li>@Html.ActionLink("Products", "Index", "Product")</li>
                         <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
-
+                        <li>@Html.ActionLink("Orders", "Index", "Order")</li>
                     }
                 </ul>
                 <ul class="nav navbar-nav pull-right">

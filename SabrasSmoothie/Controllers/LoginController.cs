@@ -38,6 +38,7 @@ namespace SabrasSmoothie.Controllers
             else
             {
                 Session["User"] = true;
+                Session["UserId"] = user.Id;
                 Session["UserFullName"] = user.FirstName + " " + user.LastName;
             }
             

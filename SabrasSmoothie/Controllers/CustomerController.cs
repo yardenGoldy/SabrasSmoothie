@@ -53,6 +53,9 @@ namespace SabrasSmoothie.Controllers
             {
                 customer.IsAdmin = false;
 
+                if (customer.BirthDate.Year < 1900) customer.BirthDate = new DateTime(1900, customer.BirthDate.Month, customer.BirthDate.Day);
+                else if (customer.ZipCode > 100000 || customer.ZipCode < 10000) customer.ZipCode = 4510301;
+
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");

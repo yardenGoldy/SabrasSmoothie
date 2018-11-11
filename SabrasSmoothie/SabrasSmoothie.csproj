@@ -54,53 +54,8 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.ML.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.CpuMath, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.CpuMath.0.7.0\lib\netstandard2.0\Microsoft.ML.CpuMath.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.Ensemble, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.Ensemble.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.FastTree, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.FastTree.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.KMeansClustering, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.KMeansClustering.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.Legacy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.Legacy.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.Maml, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.Maml.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.PCA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.PCA.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.PipelineInference, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.PipelineInference.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.ResultProcessor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.ResultProcessor.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.SamplesUtils, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.SamplesUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.StandardLearners, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.StandardLearners.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.Sweeper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.Sweeper.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ML.Transforms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.0.7.0\lib\netstandard2.0\Microsoft.ML.Transforms.dll</HintPath>
+    <Reference Include="Mono.Linq.Expressions, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Linq.Expressions.1.2.0.0\lib\Mono.Linq.Expressions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -227,6 +182,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -341,6 +297,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cart\" />
     <Folder Include="Views\SabrasExample\" />
   </ItemGroup>
   <ItemGroup>

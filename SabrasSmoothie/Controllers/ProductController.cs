@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SabrasSmoothie.Models;
+using System.IO;
 
 namespace SabrasSmoothie.Controllers
 {
@@ -46,10 +47,28 @@ namespace SabrasSmoothie.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Price,Calories,IsVegan,ImagePath")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Price,Calories,IsVegan")] Product product, [Bind(Include ="file")]HttpPostedFileBase file)
         {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(file.FileName);
+                    string filepath = Path.Combine(Server.MapPath("~/ProductsImageUploads/"), filename);
+                    file.SaveAs(filepath);
+                    ViewBag.ImgPath = filepath;
+                    ViewBag.Message = "Image uploaded successfully";
+                    product.ImagePath = "/ProductsImageUploads/" + filename;
+                }
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+
             if (ModelState.IsValid)
             {
+                
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
