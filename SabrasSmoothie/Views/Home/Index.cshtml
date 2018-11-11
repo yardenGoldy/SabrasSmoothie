@@ -11,23 +11,27 @@
 <div class="container home">
     <div class="params">
         <h4>Price</h4>
+        @if(ViewBag.productsByPrice != null)
+        {
         <div class="options">
             <div class="option">
                 <a href="#">
-                    <label><span class="first-label">Under USD 123</span><span class="grouped">(@ViewBag.productsByPrice[0].Count)</span></label>
+                    <label><span class="first-label">Under USD @ViewBag.productsByPrice[1][0].Price</span><span class="grouped">(@ViewBag.productsByPrice[0].Count)</span></label>
                 </a>
             </div>
             <div class="option">
                 <a class="cbx prRng" href="#">
-                    <label><span class="first-label">USD 110.00 - USD 405.00</span><span class="grouped">(@ViewBag.productsByPrice[1].Count)</span></label>
+                    <label><span class="first-label">USD @ViewBag.productsByPrice[0][@ViewBag.productsByPrice[0].Count - 1].Price - @ViewBag.productsByPrice[2][0].Price</span><span class="grouped">(@ViewBag.productsByPrice[1].Count)</span></label>
                 </a>
             </div>
             <div class="option">
                 <a class="cbx prRng" href="#">
-                    <label><span class="first-label">Over ILS 100</span><span class="grouped">(@ViewBag.productsByPrice[2].Count)</span></label>
+                    <label><span class="first-label">Over ILS @ViewBag.productsByPrice[2][0].Price</span><span class="grouped">(@ViewBag.productsByPrice[2].Count)</span></label>
                 </a>
             </div>
         </div>
+        }
+        
         <form action="Home/SendParams" method="post">
             <div class="price-paramater">
                 <label>USD</label>
@@ -36,27 +40,30 @@
                 <input class="price" pattern="\d*" name="maxPrice" type="text" size="3" maxlength="13" value="">
             </div>
             <h4>Calories</h4>
+            @if(ViewBag.productsByCalories != null)
+            {
             <div class="options">
                 <div class="option">
                     <a href="#">
-                        <label><span class="first-label">Under Cal 100</span><span class="grouped">(@ViewBag.productsByCalories[0].Count)</span></label>
+                        <label><span class="first-label">Under Cal @ViewBag.productsByCalories[1][0].Calories</span><span class="grouped">(@ViewBag.productsByCalories[0].Count)</span></label>
                     </a>
                 </div>
                 <div class="option">
                     <a class="cbx prRng" href="#">
-                        <input aria-hidden="true" tabindex="-1" type="checkbox" class="second-checkbox">
                         <label>
-                            <span class="first-label">Cal 110.00 - Cal 405.00</span>
+                            <span class="first-label">Cal @ViewBag.productsByCalories[0][@ViewBag.productsByCalories[0].Count - 1].Calories - Cal @ViewBag.productsByCalories[2][0].Calories</span>
                             <span class="grouped">(@ViewBag.productsByCalories[1].Count)</span>
                         </label>
                     </a>
                 </div>
                 <div class="option">
                     <a class="cbx prRng" href="#">
-                        <label><span class="first-label">Over Cal 100</span><span class="grouped">(@ViewBag.productsByCalories[2].Count)</span></label>
+                        <label><span class="first-label">Over Cal @ViewBag.productsByCalories[2][0].Calories</span><span class="grouped">(@ViewBag.productsByCalories[2].Count)</span></label>
                     </a>
                 </div>
             </div>
+            }
+
             <div class="price-paramater">
                 <label>Cal</label>
                 <input class="price" name="minCal" pattern="\d*" type="text" size="3" maxlength="13" value="">
@@ -65,7 +72,7 @@
             </div>
             <div class="features">
                 <h4>Features</h4>
-                <label>Is Vegan</label>
+                <label>Is Vegan (@ViewBag.productsByVegan[true].Count)</label>
                 <input name="isVegan" aria-hidden="true" tabindex="-1" type="checkbox" class="vegan">
             </div>
 

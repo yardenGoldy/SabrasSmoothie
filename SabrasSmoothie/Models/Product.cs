@@ -76,17 +76,29 @@ namespace SabrasSmoothie.Models
         private List<List<Product>> GroupingByNumber(List<Product> sortedProducts, int numberOfGroup)
         {
             int length = sortedProducts.Count;
-            int ProductsPerGroup = length / numberOfGroup;
+
+            if(sortedProducts.Count < numberOfGroup)
+            {
+                return null;
+            }
+
             List<List<Product>> result = new List<List<Product>>();
+            int ProductsPerGroup = length / numberOfGroup;
+            
             result.Add(sortedProducts.GetRange(0, ProductsPerGroup));
             result.Add(sortedProducts.GetRange(ProductsPerGroup, ProductsPerGroup));
             result.Add(sortedProducts.GetRange(ProductsPerGroup * 2, length - ProductsPerGroup * 2));
             return result;
         }
 
-        public IDictionary<bool, IEnumerable<Product>> GroupByVegan()
+        public IDictionary<bool, List<Product>> GroupByVegan(Expression<Func<Product, bool>> query)
         {
-            return Products.GroupBy(x => x.IsVegan).ToDictionary(x => x.Key, y => y.AsEnumerable());
+            return Products.Where(query).GroupBy(x => x.IsVegan).ToDictionary(x => x.Key, y => y.ToList());
+        }
+
+        public Expression<Func<Product, bool>> QueryIsVegan(Expression<Func<Product, bool>> query, bool isVegan)
+        {
+            return query.AndAlso(product => product.IsVegan == isVegan);
         }
     }
 }

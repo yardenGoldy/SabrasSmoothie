@@ -29,12 +29,11 @@ namespace SabrasSmoothie.Controllers
 
             var productsByCalories = Product.GroupByCalories(query);
             var productsByPrice = Product.GroupByPrices(query);
-            //var productsByVegan = Product.GroupByVegan(_query);
-
+            var productsByVegan = Product.GroupByVegan(query);
             ViewBag.Products = products;
             ViewBag.productsByCalories = productsByCalories;
             ViewBag.productsByPrice = productsByPrice;
-            //ViewBag.productsByVegan = productsByVegan;
+            ViewBag.productsByVegan = productsByVegan;
             return View();
         }
 
@@ -49,7 +48,10 @@ namespace SabrasSmoothie.Controllers
         public ActionResult SendParams(int minPrice = int.MinValue, int maxPrice = int.MaxValue, int minCal = int.MinValue, int maxCal = int.MaxValue, string isVegan = null)
         {
             var query = TempData["search_query"] != null ? ((Expression<Func<Product, bool>>)TempData["search_query"]) : PredicateBuilder.True<Product>();
-            TempData["param_query"] = Product.RangeCalories(Product.RangePrice(query, minPrice, maxPrice), minCal, maxCal);
+            var rangeQuery = Product.RangeCalories(Product.RangePrice(query, minPrice, maxPrice), minCal, maxCal);
+            var veganWithRangeQuery = isVegan == null ? rangeQuery : Product.QueryIsVegan(rangeQuery, isVegan.Equals("on") ? true : false);
+
+            TempData["param_query"] = veganWithRangeQuery;
             return RedirectToAction("Index");
         }
 
