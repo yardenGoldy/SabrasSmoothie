@@ -72,7 +72,7 @@
             </div>
             <div class="features">
                 <h4>Features</h4>
-                <label>Is Vegan (@ViewBag.productsByVegan[true].Count)</label>
+                <label>Is Vegan (@if (ViewBag.productsByVegan.ContainsKey(true)) {<b>@ViewBag.productsByVegan[true].Count</b>} else { <b>0</b>})</label>
                 <input name="isVegan" aria-hidden="true" tabindex="-1" type="checkbox" class="vegan">
             </div>
 

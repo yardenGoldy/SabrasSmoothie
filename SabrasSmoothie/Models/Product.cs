@@ -70,7 +70,7 @@ namespace SabrasSmoothie.Models
 
         public Expression<Func<Product, bool>> RangeCalories(Expression<Func<Product, bool>> query, int min, int max)
         {
-            return query.AndAlso(x => x.Calories >= min && x.Price <= max);
+            return query.AndAlso(x => x.Calories >= min && x.Calories <= max);
         }
 
         private List<List<Product>> GroupingByNumber(List<Product> sortedProducts, int numberOfGroup)
