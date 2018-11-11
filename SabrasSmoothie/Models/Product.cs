@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Mono.Linq.Expressions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace SabrasSmoothie.Models
@@ -29,56 +31,46 @@ namespace SabrasSmoothie.Models
             return this.Products.Include(product => product.ProductOrders);
         }
 
-        public IEnumerable<Product> SortByOrders(IEnumerable<Product> products = null)
+        public IEnumerable<Product> SortByOrders(Expression<Func<Product, bool>> query)
         {
-            if(products == null)
-            {
-                products = Products.ToList();
-            }
-
-            return products.OrderBy(x => x.ProductOrders != null ? x.ProductOrders.Count : 0);
+            return Products.Where(query).ToList().OrderBy(x => x.ProductOrders != null ? x.ProductOrders.Count : 0);
         }
 
-        public IEnumerable<Product> FindByAll(string message, IEnumerable<Product> products = null)
+        public Expression<Func<Product, bool>> FindByAll(Expression<Func<Product, bool>> query, string message)
         {
-            if (products == null)
-            {
-                products = Products.ToList();
-            }
+            Expression<Func<Product, bool>> newQuery = PredicateBuilder.False<Product>();
 
-            IEnumerable<Product> allNames = null, allPrices = null, allCalories = null;
             int result;
             if (int.TryParse(message, out result))
             {
-                allPrices = Products.Where(x => x.Price == result) ?? Enumerable.Empty<Product>();
-                allCalories = Products.Where(x => x.Calories == result) ?? Enumerable.Empty<Product>();
-                
+                newQuery = newQuery.OrElse(Product => Product.Price == result).OrElse(product => product.Calories == result);
             }
 
-            allNames = Products.Where(x => x.Name == message) ?? Enumerable.Empty<Product>();
-            
+            newQuery = newQuery.OrElse(Product => Product.Name == message);
 
-            return allNames.Union(allPrices).Union(allCalories).Distinct();
+            return newQuery.AndAlso(query);
         }
 
-        public List<List<Product>> GroupByPrices(IEnumerable<Product> products = null) {
-            var productsOrderByPrice = Products.OrderBy(x => x.Price).ToList();
+        public List<List<Product>> GroupByPrices(Expression<Func<Product, bool>> query)
+        {
+            var productsOrderByPrice = Products.Where(query).OrderBy(x => x.Price).ToList();
             return GroupingByNumber(productsOrderByPrice, 3);
         }
 
-        public List<List<Product>> GroupByCalories(IEnumerable<Product> products = null)
+        public List<List<Product>> GroupByCalories(Expression<Func<Product, bool>> query)
         {
-            var productsOrderByPrice = Products.OrderBy(x => x.Calories).ToList();
+            var productsOrderByPrice = Products.Where(query).OrderBy(x => x.Calories).ToList();
             return GroupingByNumber(productsOrderByPrice, 3);
         }
 
-        public IEnumerable<Product> RangePrice(int min, int max, IEnumerable<Product> products = null) {
-            return Products.Where(x => x.Price >= min && x.Price <= max).ToList();
+        public Expression<Func<Product, bool>> RangePrice(Expression<Func<Product, bool>> query, int min, int max)
+        {
+            return query.AndAlso(x => x.Price >= min && x.Price <= max);
         }
 
-        public IEnumerable<Product> RangeCalories(int min, int max)
+        public Expression<Func<Product, bool>> RangeCalories(Expression<Func<Product, bool>> query, int min, int max)
         {
-            return Products.Where(x => x.Calories >= min && x.Price <= max);
+            return query.AndAlso(x => x.Calories >= min && x.Price <= max);
         }
 
         private List<List<Product>> GroupingByNumber(List<Product> sortedProducts, int numberOfGroup)
@@ -94,7 +86,7 @@ namespace SabrasSmoothie.Models
 
         public IDictionary<bool, IEnumerable<Product>> GroupByVegan()
         {
-            return Products.GroupBy(x => x.IsVegan).ToDictionary(x =>x.Key, y=>y.AsEnumerable());
+            return Products.GroupBy(x => x.IsVegan).ToDictionary(x => x.Key, y => y.AsEnumerable());
         }
     }
 }

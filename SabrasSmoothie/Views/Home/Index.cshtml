@@ -5,7 +5,7 @@
 <div style="text-align:center">
     <form method="post" action="Home/Search">
         <input type="text" size="50" placeholder="Search for anything..." name="message">
-        <input type="submit" class="fa fa-search"/>
+        <input type="submit" class="fa fa-search" />
     </form>
 </div>
 <div class="container home">
@@ -14,96 +14,80 @@
         <div class="options">
             <div class="option">
                 <a href="#">
-                    <input type="checkbox" class="first-checkbox">
-                    <label><span class="first-label">Under ILS 100</span><span class="grouped">(@ViewBag.productsByPrice[0].Count)</span></label>
+                    <label><span class="first-label">Under USD 123</span><span class="grouped">(@ViewBag.productsByPrice[0].Count)</span></label>
                 </a>
             </div>
             <div class="option">
                 <a class="cbx prRng" href="#">
-                    <input aria-hidden="true" tabindex="-1" type="checkbox" class="second-checkbox">
-
-
-
-                    <label><span class="first-label">ILS 110.00 - ILS 405.00</span><span class="grouped">(@ViewBag.productsByPrice[1].Count)</span></label>
+                    <label><span class="first-label">USD 110.00 - USD 405.00</span><span class="grouped">(@ViewBag.productsByPrice[1].Count)</span></label>
                 </a>
             </div>
             <div class="option">
                 <a class="cbx prRng" href="#">
-                    <input aria-hidden="true" tabindex="-1" type="checkbox" class="Third-checkbox">
-
-
-
                     <label><span class="first-label">Over ILS 100</span><span class="grouped">(@ViewBag.productsByPrice[2].Count)</span></label>
                 </a>
             </div>
         </div>
-        <div class="price-paramater">
-            <label>ILS</label>
-            <input class="price" pattern="\d*" type="text" size="3" maxlength="13" value="">
-            <label> to ILS</label>
-            <input class="price" pattern="\d*" type="text" size="3" maxlength="13" value="">
-            <a href="#" class="btn btn-info btn-xs">
-                <span class="glyphicon glyphicon-menu-right"></span>
-            </a>
-        </div>
-        <h4>Calories</h4>
-        <div class="options">
-            <div class="option">
-                <a href="#">
-                    <input type="checkbox" class="first-checkbox">
-                    <label><span class="first-label">Under Cal 100</span><span class="grouped">(@ViewBag.productsByCalories[0].Count)</span></label>
-                </a>
+        <form action="Home/SendParams" method="post">
+            <div class="price-paramater">
+                <label>USD</label>
+                <input class="price" name="minPrice" pattern="\d*" type="text" size="3" maxlength="13" value="">
+                <label> to USD</label>
+                <input class="price" pattern="\d*" name="maxPrice" type="text" size="3" maxlength="13" value="">
             </div>
-            <div class="option">
-                <a class="cbx prRng" href="#">
-                    <input aria-hidden="true" tabindex="-1" type="checkbox" class="second-checkbox">
-                    <label>
-                        <span class="first-label">Cal 110.00 - Cal 405.00</span>
-                        <span class="grouped">(@ViewBag.productsByCalories[1].Count)</span>
-                    </label>
-                </a>
+            <h4>Calories</h4>
+            <div class="options">
+                <div class="option">
+                    <a href="#">
+                        <label><span class="first-label">Under Cal 100</span><span class="grouped">(@ViewBag.productsByCalories[0].Count)</span></label>
+                    </a>
+                </div>
+                <div class="option">
+                    <a class="cbx prRng" href="#">
+                        <input aria-hidden="true" tabindex="-1" type="checkbox" class="second-checkbox">
+                        <label>
+                            <span class="first-label">Cal 110.00 - Cal 405.00</span>
+                            <span class="grouped">(@ViewBag.productsByCalories[1].Count)</span>
+                        </label>
+                    </a>
+                </div>
+                <div class="option">
+                    <a class="cbx prRng" href="#">
+                        <label><span class="first-label">Over Cal 100</span><span class="grouped">(@ViewBag.productsByCalories[2].Count)</span></label>
+                    </a>
+                </div>
             </div>
-            <div class="option">
-                <a class="cbx prRng" href="#">
-                    <input aria-hidden="true" tabindex="-1" type="checkbox" class="Third-checkbox">
-
-
-
-                    <label><span class="first-label">Over Cal 100</span><span class="grouped">(@ViewBag.productsByCalories[2].Count)</span></label>
-                </a>
+            <div class="price-paramater">
+                <label>Cal</label>
+                <input class="price" name="minCal" pattern="\d*" type="text" size="3" maxlength="13" value="">
+                <label> to Cal</label>
+                <input class="price" name="maxCal" pattern="\d*" type="text" size="3" maxlength="13" value="">
             </div>
-        </div>
-        <div class="price-paramater">
-            <label>Cal</label>
-            <input class="price" pattern="\d*" type="text" size="3" maxlength="13" value="">
-            <label> to Cal</label>
-            <input class="price" pattern="\d*" type="text" size="3" maxlength="13" value="">
-            <a href="#" class="btn btn-info btn-xs">
-                <span class="glyphicon glyphicon-menu-right"></span>
-            </a>
-        </div>
-        <div class="features">
-            <h4>Features</h4>
-            <label>Is Vegan</label>
-            <input aria-hidden="true" tabindex="-1" type="checkbox" class="vegan">
-        </div>
+            <div class="features">
+                <h4>Features</h4>
+                <label>Is Vegan</label>
+                <input name="isVegan" aria-hidden="true" tabindex="-1" type="checkbox" class="vegan">
+            </div>
+
+            <input type="submit" />
+        </form>
     </div>
 
     <div class="items">
         @foreach (var product in ViewBag.Products)
         {
             <pre class="products-catalog" data-toggle="tooltip" data-placement="bottom" title="@product.Description">
-                <div class="title">
-                    <h4>@product.Name</h4>
+            <div class="title">
+            <h4>@product.Name</h4>
                     @if (product.IsVegan)
                     {
-                        <a><span class="glyphicon glyphicon-leaf" title="vegan"></span></a>
+            <a><span class="glyphicon glyphicon-leaf" title="vegan"></span></a>
                     }
 
                 </div>
-                <span>
-                    <a title="Add to cart" href="#" class="btn btn-default btn-add-to-cart btn-xs">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+            <span>
+            <a title="Add to cart" href="#" class="btn btn-default btn-add-to-cart btn-xs">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
 
                     </a>
                 </span>
@@ -111,9 +95,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="firstLine">
-    <h4>@product.Price$</h4>
-    <h4>@product.Calories Calories</h4>
+            <h4>@product.Price$</h4>
+            <h4>@product.Calories Calories</h4>
 </div>
 </pre>
         }
